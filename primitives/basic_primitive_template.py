@@ -16,11 +16,11 @@ class EasePrimitive(pypot.primitive.LoopPrimitive):
     # The update function is automatically called at the frequency given on the constructor
     def update(self):
         try:
-            print "moves motor"
+            # print("moves motor")
             next_step = self.easeCounter.next()
             self.robot.base_pan.goal_speed = next_step
         except StopIteration:
-            print "Stops iterator"
+            print("Stops iterator")
             self.robot.base_pan.goal_speed = 0
             self.stop()
 

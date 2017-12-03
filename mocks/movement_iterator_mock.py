@@ -7,7 +7,7 @@ class EaseCounter:
         return self
 
     def next(self): # Python 3: def __next__(self)
-        print self.current, ">", self.steps.size
+        # print(self.current, ">", self.steps.size)
         if self.current >= self.steps.size:
             raise StopIteration
         else:

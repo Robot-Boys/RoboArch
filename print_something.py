@@ -12,7 +12,6 @@ controller = None
 
 with closing(pypot.robot.from_config(ergo_config)) as robot:
     robot.start_sync()
-
     # Put the robot in its initial position
     for m in robot.motors:  # Note that we always provide an alias for all motors.
         m.compliant = False
@@ -24,8 +23,14 @@ with closing(pypot.robot.from_config(ergo_config)) as robot:
     # Start robot here
     # basic_controller(robot)
     controller = WebController(robot)
+    print('Print stuff is up! ')
 
-
-
-
-
+    while True:
+        data = sys.stdin.readline()
+        if str(data) == 'hello':
+            print("Here is the data: " + str(data))
+            sys.stdout.flush()
+        if str(data) == 'hottie':
+            print("Here is the data: " + str(data))
+            controller.ease_move()
+            sys.stdout.flush()
