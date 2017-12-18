@@ -1,0 +1,16 @@
+bottle==0.12.13
+click==6.7
+Flask==0.12.2
+ikpy==2.2.3
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+mpmath==1.0.0
+numpy==1.13.3
+poppy-creature==2.0.0
+pypot==3.0.3
+pyserial==3.4
+scipy==1.0.0
+sympy==1.1.1
+tornado==4.5.2
+Werkzeug==0.12.2

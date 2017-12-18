@@ -3,7 +3,7 @@ from mocks.movement_iterator_mock import EaseCounter
 import pypot.primitive
 
 
-class EasePrimitive(pypot.primitive.LoopPrimitive):
+class EaseTemplatePrimitive(pypot.primitive.LoopPrimitive):
     def __init__(self, robot, refresh_freq, amp=30, freq=0.5):
         self.robot = robot
         self.amp = amp

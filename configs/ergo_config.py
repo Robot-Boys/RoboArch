@@ -16,7 +16,8 @@ ergo_config = {
             'type': 'MX-28',
             'id': 2,
             'angle_limit': [-90.0, 90.0],
-            'offset': 0.0
+            'offset': 0.0,
+
         },
         'head_pan': {
             'orientation': 'indirect',

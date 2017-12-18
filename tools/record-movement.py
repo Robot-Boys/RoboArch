@@ -10,10 +10,10 @@ robot = pypot.robot.from_config(ergo_config)
 move_recorder = MoveRecorder(robot, 50, robot.motors)
 
 robot.compliant = True
-print "start recording.."
+print("start recording..")
 move_recorder.start()
 time.sleep(5)
-print "Recording end."
+print("Recording end.")
 move_recorder.stop()
 
 with open('my_nice_move.move', 'w') as f:
@@ -24,9 +24,9 @@ with open('my_nice_move.move') as f:
 
 robot.compliant = False
 
-print "Play recording"
+print("Play recording")
 move_player = MovePlayer(robot, m)
 move_player.start()
 time.sleep(10)
-print "recording played"
+print("recording played")
 
