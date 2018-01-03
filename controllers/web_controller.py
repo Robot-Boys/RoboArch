@@ -3,6 +3,7 @@ import pickle
 from primitives.main_position_primitive import MainPositionPrimitive
 from primitives.easing_primitive import EasePrimitive
 from primitives.go_to_position_primitive import GoToPositionPrimitive
+from primitives.bow_primitve import BowPrimitive
 
 
 class WebController:
@@ -26,6 +27,8 @@ class WebController:
                 self.main_position()
             if pose_info['pose'] == "break":
                 break
+            if pose_info['pose'] == "bow":
+                self.bow()
             if pose_info['pose'] == "to_position":
                 if pose_info['motor'] == 'up_down':
                     self.up_down_to_position(float(int(pose_info['pos'])))  # Convert string to int
@@ -41,7 +44,11 @@ class WebController:
         ease.start()
 
     def main_position(self):
-        move = MainPositionPrimitive(self.robot, 5000)
+        move = MainPositionPrimitive(self.robot, 1000)
+        move.start()
+
+    def bow(self):
+        move = BowPrimitive(self.robot, 1000)
         move.start()
 
     def left_right_to_position(self, pos):
@@ -61,7 +68,7 @@ class WebController:
 
     def knee_to_position(self, pos):
         self.knee_position.stop()
-        self.knee_position = GoToPositionPrimitive(self.robot, 'knee', pos, 250)
+        self.knee_position = GoToPositionPrimitive(self.robot, 'knee', pos, 1000)
         self.knee_position.start()
 
 

@@ -1,9 +1,10 @@
-from easingutilities.easingcontroller.EasingController import EasingController
+import numpy
 from easingutilities.easing.SinusoidalEase import SinusoidalEase
+from easingutilities.easingcontroller.EasingController import EasingController
 import pypot.primitive
 
 
-class MainPositionPrimitive(pypot.primitive.LoopPrimitive):
+class BowPrimitive(pypot.primitive.LoopPrimitive):
     def __init__(self, robot, refresh_freq):
         self.robot = robot
 
@@ -25,8 +26,7 @@ class MainPositionPrimitive(pypot.primitive.LoopPrimitive):
 
         pypot.primitive.LoopPrimitive.__init__(self, robot, refresh_freq)
 
-        # The update function is automatically called at the frequency given on the constructor
-
+    # The update function is automatically called at the frequency given on the constructor
     def update(self):
         try:
             print("moves motor")
@@ -37,10 +37,4 @@ class MainPositionPrimitive(pypot.primitive.LoopPrimitive):
         except StopIteration:
             print("Stops iterator")
             self.stop()
-
-
-
-
-
-
 
