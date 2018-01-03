@@ -2,12 +2,13 @@ head_config = {
     'controllers': {
         'my_dxl_controller': {
             'sync_read': False,
-            'attached_motors': ['up_down', 'left_right', 'rotation'],
+            'attached_motors': ['up_down', 'left_right', 'rotation', 'knee'],
             'port': 'auto'
         }
     },
     'motorgroups': {
-        'head': ['up_down', 'left_right', 'rotation']
+        'head': ['up_down', 'left_right', 'rotation'],
+        'legs': ['knee']
     },
     'motors': {
         'up_down': {
@@ -30,6 +31,13 @@ head_config = {
             'type': 'MX-28',
             'id': 3,
             'angle_limit': [-60.0, 60.0],
+            'offset': 0.0
+        },
+        'knee': {
+            'orientation': 'direct',
+            'type': 'MX-106',
+            'id': 4,
+            'angle_limit': [-10.0, 30.0],
             'offset': 0.0
         }
     }

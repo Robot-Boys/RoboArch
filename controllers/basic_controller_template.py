@@ -3,9 +3,9 @@ import time
 
 
 def basic_controller(robot):
-    ease = EasePrimitive(robot, 1000, 10000, 60)
+    ease = EasePrimitive(robot, 1000, 10, 50)
     ease.start()
     time.sleep(30)
-    ease= EasePrimitive(robot, 1000, 10000, -60)
+    ease= EasePrimitive(robot, 1000, 10, -60)
     ease.start()
     time.sleep(30)

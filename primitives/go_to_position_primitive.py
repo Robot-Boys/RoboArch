@@ -5,7 +5,7 @@ import pypot.primitive
 
 
 class GoToPositionPrimitive(pypot.primitive.LoopPrimitive):
-    def __init__(self, robot, motor_id, pos, steps, freq=10000):
+    def __init__(self, robot, motor_id, pos, steps, freq=1000):
         self.robot = robot
         self.motor = getattr(self.robot, motor_id)
         self.freq = freq

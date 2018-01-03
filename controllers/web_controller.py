@@ -12,6 +12,8 @@ class WebController:
         self.left_right_position = GoToPositionPrimitive(self.robot, 'left_right', 0, 1000)
         self.up_down_position = GoToPositionPrimitive(self.robot, 'up_down', 0, 1000)
         self.rotation_position = GoToPositionPrimitive(self.robot, 'rotation', 0, 1000)
+        self.knee_position = GoToPositionPrimitive(self.robot, 'knee', 0, 1000)
+
 
         while True:
             data, addr = sock.recvfrom(1024)  # buffer size is 1024 bytes
@@ -44,17 +46,17 @@ class WebController:
 
     def left_right_to_position(self, pos):
         self.left_right_position.stop()
-        self.left_right_position = GoToPositionPrimitive(self.robot, 'left_right', pos, 250)
+        self.left_right_position = GoToPositionPrimitive(self.robot, 'left_right', pos, 1000)
         self.left_right_position.start()
 
     def up_down_to_position(self, pos):
         self.up_down_position.stop()
-        self.up_down_position = GoToPositionPrimitive(self.robot, 'up_down', pos, 250)
+        self.up_down_position = GoToPositionPrimitive(self.robot, 'up_down', pos, 1000)
         self.up_down_position.start()
 
     def rotation_to_position(self, pos):
         self.rotation_position.stop()
-        self.rotation_position = GoToPositionPrimitive(self.robot, 'rotation', pos, 250)
+        self.rotation_position = GoToPositionPrimitive(self.robot, 'rotation', pos, 1000)
         self.rotation_position.start()
 
     def knee_to_position(self, pos):

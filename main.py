@@ -30,10 +30,12 @@ with closing(pypot.robot.from_config(head_config)) as robot:
     # Wait for the robot to actually reach the base position.
     time.sleep(2)
 
+    # controller = basic_controller(robot)
+
     # Start robot here
     # basic_controller(robot)
     controller = WebController(robot, sock)
-    # controller = basic_controller(robot)
+
 
     for m in robot.motors:  # Note that we always provide an alias for all motors.
         m.compliant = True
