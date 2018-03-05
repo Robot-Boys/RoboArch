@@ -3,7 +3,8 @@ import pickle
 from primitives.main_position_primitive import MainPositionPrimitive
 from primitives.easing_primitive import EasePrimitive
 from primitives.go_to_position_primitive import GoToPositionPrimitive
-from primitives.bow_primitve import BowPrimitive
+from primitives.bow_primitive import BowPrimitive
+from primitives.stop_primitive import StopPrimitive
 
 
 class WebController:
@@ -29,6 +30,8 @@ class WebController:
                 break
             if pose_info['pose'] == "bow":
                 self.bow()
+            if pose_info['pose'] == 'stop':
+                self.stop()
             if pose_info['pose'] == "to_position":
                 if pose_info['motor'] == 'up_down':
                     self.up_down_to_position(float(int(pose_info['pos'])))  # Convert string to int
@@ -48,7 +51,11 @@ class WebController:
         move.start()
 
     def bow(self):
-        move = BowPrimitive(self.robot, 1000)
+        move = BowPrimitive(self.robot, 3500, 1500)
+        move.start()
+
+    def stop(self):
+        move = StopPrimitive(self.robot, 4000, 1500)
         move.start()
 
     def left_right_to_position(self, pos):
@@ -59,6 +66,7 @@ class WebController:
     def up_down_to_position(self, pos):
         self.up_down_position.stop()
         self.up_down_position = GoToPositionPrimitive(self.robot, 'up_down', pos, 1000)
+        print("Move state: ", self.up_down_position.state)
         self.up_down_position.start()
 
     def rotation_to_position(self, pos):
@@ -70,5 +78,3 @@ class WebController:
         self.knee_position.stop()
         self.knee_position = GoToPositionPrimitive(self.robot, 'knee', pos, 1000)
         self.knee_position.start()
-
-

@@ -6,7 +6,7 @@ import socket
 
 from configs.ergo_config import ergo_config
 from configs.single_motor_config import single_motor_config
-from configs.head_config import head_config
+from configs.lamp_config import lamp_config
 from controllers.basic_controller_template import basic_controller
 from controllers.web_controller import WebController
 
@@ -20,7 +20,7 @@ sock.bind((UDP_IP, UDP_PORT))
 
 print("going on")
 
-with closing(pypot.robot.from_config(head_config)) as robot:
+with closing(pypot.robot.from_config(lamp_config)) as robot:
     robot.start_sync()
 
     # Put the robot in its initial position
