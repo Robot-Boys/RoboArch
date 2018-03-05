@@ -11,6 +11,7 @@ class GoToPositionPrimitive(pypot.primitive.LoopPrimitive):
         self.robot = robot
         self.motor = getattr(self.robot, motor_id)
         self.freq = freq
+        self.state = "jeg er en state"
         self.controller = EasingController(self.motor, BounceEase(), steps)
         #self.controller = EasingController(self.motor, BackEase(), steps)
         #self.controller = EasingController(self.motor, SinusoidalEase, steps)

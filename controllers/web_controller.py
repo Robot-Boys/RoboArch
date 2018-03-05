@@ -66,6 +66,7 @@ class WebController:
     def up_down_to_position(self, pos):
         self.up_down_position.stop()
         self.up_down_position = GoToPositionPrimitive(self.robot, 'up_down', pos, 1000)
+        print("Move state: ", self.up_down_position.state)
         self.up_down_position.start()
 
     def rotation_to_position(self, pos):
