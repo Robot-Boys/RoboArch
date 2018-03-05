@@ -1,5 +1,7 @@
 from easingutilities.easing.LinearEase import LinearEase
 from easingutilities.easing.SinusoidalEase import SinusoidalEase
+from easingutilities.easing.BackEase import BackEase
+from easingutilities.easing.BounceEase import BounceEase
 from easingutilities.easingcontroller.EasingController import EasingController
 import pypot.primitive
 
@@ -9,7 +11,9 @@ class GoToPositionPrimitive(pypot.primitive.LoopPrimitive):
         self.robot = robot
         self.motor = getattr(self.robot, motor_id)
         self.freq = freq
-        self.controller = EasingController(self.motor, SinusoidalEase, steps)
+        self.controller = EasingController(self.motor, BounceEase(), steps)
+        #self.controller = EasingController(self.motor, BackEase(), steps)
+        #self.controller = EasingController(self.motor, SinusoidalEase, steps)
         self.controller.goal = pos
         self.controller.__iter__()
         print('Go to posisiont: ', motor_id, pos)
@@ -24,7 +28,3 @@ class GoToPositionPrimitive(pypot.primitive.LoopPrimitive):
         except StopIteration:
             print("Stops iterator")
             self.stop()
-
-
-
-

@@ -20,7 +20,7 @@ class MainPositionPrimitive(pypot.primitive.LoopPrimitive):
         self.rotation_controller.__iter__()
 
         self.knee_controller = EasingController(robot.knee, SinusoidalEase)
-        self.knee_controller.goal = 0
+        self.knee_controller.goal = 25
         self.knee_controller.__iter__()
 
         pypot.primitive.LoopPrimitive.__init__(self, robot, refresh_freq)
@@ -37,10 +37,3 @@ class MainPositionPrimitive(pypot.primitive.LoopPrimitive):
         except StopIteration:
             print("Stops iterator")
             self.stop()
-
-
-
-
-
-
-
