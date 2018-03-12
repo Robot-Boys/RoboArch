@@ -19,6 +19,7 @@ sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
 sock.bind((UDP_IP, UDP_PORT))
 
+print("going on")
 
 with closing(pypot.robot.from_config(lamp_config)) as robot:
     robot.start_sync()
