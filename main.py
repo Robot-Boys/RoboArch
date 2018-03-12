@@ -9,6 +9,7 @@ from configs.single_motor_config import single_motor_config
 from configs.lamp_config import lamp_config
 from controllers.basic_controller_template import basic_controller
 from controllers.web_controller import WebController
+from controllers.joystick_controller import JoystickController
 
 
 UDP_IP = "127.0.0.1"
@@ -35,7 +36,7 @@ with closing(pypot.robot.from_config(lamp_config)) as robot:
 
     # Start robot here
     # basic_controller(robot)
-    controller = WebController(robot, sock)
+    controller = JoystickController(robot, sock)
 
 
     for m in robot.motors:  # Note that we always provide an alias for all motors.

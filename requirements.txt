@@ -14,4 +14,5 @@ scipy==1.0.0
 sympy==1.1.1
 tornado==4.5.2
 Werkzeug==0.12.2
-easingutilities==1.1
+PyTweening==1.0.3
+easingutilities==1.2

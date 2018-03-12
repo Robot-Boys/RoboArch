@@ -16,7 +16,6 @@ class WebController:
         self.rotation_position = GoToPositionPrimitive(self.robot, 'rotation', 0, 1000)
         self.knee_position = GoToPositionPrimitive(self.robot, 'knee', 0, 1000)
 
-
         while True:
             data, addr = sock.recvfrom(1024)  # buffer size is 1024 bytes
             pose_info = pickle.loads(data)
@@ -66,7 +65,6 @@ class WebController:
     def up_down_to_position(self, pos):
         self.up_down_position.stop()
         self.up_down_position = GoToPositionPrimitive(self.robot, 'up_down', pos, 1000)
-        print("Move state: ", self.up_down_position.state)
         self.up_down_position.start()
 
     def rotation_to_position(self, pos):
