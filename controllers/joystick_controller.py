@@ -27,7 +27,7 @@ class JoystickController:
             return
         self.pitch.stop()
         self.pitch = JoystickPrimitive(self.robot, 'up_down', action, 1000)
-        self.start()
+        self.pitch.start()
 
     def move_yaw(self, action):
         print('move yaw!')
