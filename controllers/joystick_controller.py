@@ -7,6 +7,7 @@ class JoystickController:
         self.robot = robot
         print('joystick controller is running!')
         self.pitch = JoystickPrimitive(self.robot, 'up_down', 0, 1000)
+        self.yaw = JoystickPrimitive(self.robot, 'left_right', 0, 1000)
 
         while True:
             data, addr = sock.recvfrom(1024)  # buffer size is 1024 bytes
@@ -32,6 +33,11 @@ class JoystickController:
 
     def move_yaw(self, action):
         print('move yaw!')
+        if self.yaw.state == action:
+            return
+        self.yaw.stop()
+        self.yaw = JoystickPrimitive(self.robot, 'left_right', action, 1000)
+        self.yaw.start()
 
     def move_roll(self, action):
         print('move roll!')
