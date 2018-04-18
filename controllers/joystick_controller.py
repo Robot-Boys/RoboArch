@@ -12,14 +12,15 @@ class JoystickController:
             data, addr = sock.recvfrom(1024)  # buffer size is 1024 bytes
             info = pickle.loads(data)
             print("received message:", info)
-            # dictionary as switch
-            {
-                'pitch': lambda action: self.move_pitch(action),
-                'yaw': lambda action: self.move_yaw(action),
-                'roll': lambda action: self.move_roll(action),
-                'height': lambda action: self.move_height(action),
-                'rotation': lambda action: self.move_rotation(action),
-            }[info['motor']](float(int(info['action'])))# Convert string to int
+            if 'action' in info:
+                # dictionary as switch
+                {
+                    'pitch': lambda action: self.move_pitch(action),
+                    'yaw': lambda action: self.move_yaw(action),
+                    'roll': lambda action: self.move_roll(action),
+                    'height': lambda action: self.move_height(action),
+                    'rotation': lambda action: self.move_rotation(action),
+                }[info['motor']](float(int(info['action'])))# Convert string to int
 
     def move_pitch(self, action):
         print('move pitch!', action)
