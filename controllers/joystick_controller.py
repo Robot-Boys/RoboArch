@@ -15,11 +15,11 @@ class JoystickController:
             if 'action' in info:
                 # dictionary as switch
                 {
-                    'pitch': lambda action: self.move_pitch(action),
-                    'yaw': lambda action: self.move_yaw(action),
-                    'roll': lambda action: self.move_roll(action),
-                    'height': lambda action: self.move_height(action),
-                    'rotation': lambda action: self.move_rotation(action),
+                    'PITCH': lambda action: self.move_pitch(action),
+                    'YAW': lambda action: self.move_yaw(action),
+                    'ROLL': lambda action: self.move_roll(action),
+                    'HEIGHT': lambda action: self.move_height(action),
+                    'ROTATION': lambda action: self.move_rotation(action),
                 }[info['motor']](float(int(info['action'])))# Convert string to int
 
     def move_pitch(self, action):
