@@ -14,14 +14,14 @@ lamp_config = {
         'up_down': {
             'orientation': 'direct',
             'type': 'MX-28',
-            'id': 2,
+            'id': 1,
             'angle_limit': [-60, 60.0],
             'offset': 0.0
         },
         'left_right': {
             'orientation': 'direct',
             'type': 'MX-28',
-            'id': 1,
+            'id': 2,
             'angle_limit': [-60.0, 60.0],
             'offset': 0.0,
 

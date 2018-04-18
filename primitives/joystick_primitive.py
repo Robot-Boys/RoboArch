@@ -44,7 +44,7 @@ class JoystickPrimitive(pypot.primitive.LoopPrimitive):
 
     def calculate_stop(self):
         if self.motor.present_position < self.motor.goal_position:
-            return self.motor.present_position + 5
+            return self.motor.present_position + 10
         if self.motor.present_position > self.motor.goal_position:
-            return self.motor.present_position - 5
+            return self.motor.present_position - 10
         return self.motor.present_position
