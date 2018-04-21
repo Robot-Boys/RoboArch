@@ -1,5 +1,6 @@
 import pickle
 from primitives.joystick_primitive import JoystickPrimitive
+from primitives.bow_primitive import BowPrimitive
 
 
 class JoystickController:
@@ -23,6 +24,7 @@ class JoystickController:
                     'ROLL': lambda action: self.move_roll(action),
                     'HEIGHT': lambda action: self.move_height(action),
                     'ROTATION': lambda action: self.move_rotation(action),
+                    'BOW': lambda action: self.bow(),
                 }[info['motor']](float(int(info['action'])))# Convert string to int
 
     def move_pitch(self, action):
@@ -49,8 +51,12 @@ class JoystickController:
         if self.knee.state == action:
             return
         self.knee.stop()
-        self.knee = JoystickPrimitive(self.robot, 'knee', action, 1000)
+        self.knee = JoystickPrimitive(self.robot, 'knee', action, 1000, 200)
         self.knee.start()
 
     def move_rotation(self, action):
         print('move rotation!')
+
+    def bow(self):
+        move = BowPrimitive(self.robot, 3500, 1500)
+        move.start()

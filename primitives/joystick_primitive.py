@@ -35,7 +35,7 @@ class JoystickPrimitive(pypot.primitive.LoopPrimitive):
     # The update function is automatically called at the frequency given on the constructor
     def update(self):
         try:
-            print("moves motor")
+            # print("moves motor")
             next_step = self.controller.__next__()
             self.motor.goal_position = next_step
         except StopIteration:
